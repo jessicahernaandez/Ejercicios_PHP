@@ -1,0 +1,7 @@
+# Archivos de XAMPP/PHP que no quieres subir
+*.log
+*.tmp
+/xampp/
+/logs/
+# Bases de datos locales si usas MySQL
+*.sql
