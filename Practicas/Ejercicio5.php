@@ -25,12 +25,12 @@
                     
                     //Bucle para los espacios
                     for($intEspacios=1;$intEspacios<=($intTamanio-$intFila);$intEspacios++) {
-                        echo "--";
+                        echo "&nbsp;&nbsp;";
                     }
                     
                     //Bucle para las estrellas
                     for($intEstrellas=1;$intEstrellas<=(2*$intFila-1);$intEstrellas++) {
-                            echo "* ";
+                            echo "*";
                     }
 
                     echo '<br />';
