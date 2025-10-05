@@ -1,5 +1,6 @@
+
 <?php 
-    $intTamanio=8;
+    $intTamanio=10;
 
     for($intFila=1;$intFila<=$intTamanio;$intFila++) {
 
@@ -18,6 +19,7 @@
         }
 
         echo '<br />';
+
     }
 
     for($intFila=$intTamanio-1;$intFila>=1;$intFila--) {

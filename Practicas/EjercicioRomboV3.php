@@ -6,14 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="EjercicioRomboV2.php" method="get">
-        <p><label for = "tamanio">Introduce las filas: </label>
+    <form action="EjercicioRomboV3.php" method="get">
+        <p><label for = "tamanio">Introduce una cantidad: </label>
         <input type="text" name="tamanio"></p>
         
         <p><input type="submit" name="enviar"></p>
     </form>
 
-    <?php 
+     <?php 
 
         echo "<br />";
         echo "<br />";
@@ -22,8 +22,6 @@
             $intTamanio=$_GET["tamanio"]?:0;
 
             if($intTamanio > 0) {
-                //Asi logramos introducir el numero de filas que ha introducido el usuario.
-                $intTamanio=($intTamanio+1)/2; 
 
                 //Bucle para filas (Parte superior del rombo.)
                 for($intFila=1;$intFila<=$intTamanio;$intFila++) {
@@ -58,10 +56,10 @@
                     echo "*";
 
                     //La ultima fila no entra
-                    if($intFila>2) {
+                    if($intFila>1) {
 
                         //Bucle de espacios internos.
-                        for($intDentro=1;$intDentro<=(2* $intFila - 3)-1; $intDentro++) {
+                        for($intDentro=1;$intDentro<=(2* $intFila - 3); $intDentro++) {
                             echo "&nbsp;&nbsp;";
                         }
 
@@ -75,8 +73,8 @@
                 echo "Porfavor, introduce al menos 1.";
             }
         }
-
-    
+ 
     ?>
+    
 </body>
 </html>
