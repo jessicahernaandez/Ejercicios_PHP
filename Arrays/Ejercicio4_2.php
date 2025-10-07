@@ -25,10 +25,27 @@
     echo "<br />";
 
     //Ordenamos el array segun numero de indice.
-    echo "Array ordenado: " . "<br />";
+    /*echo "Array ordenado: " . "<br />";
     sort($intArrNotas, SORT_NATURAL);
-    print_r($intArrNotas);
+    print_r($intArrNotas);*/
 
-    
-    
+    echo "Array ordenado con foreach: ";
+    echo "<br />";
+
+    //Ordenar el array por las claves (índices) de menor a mayor.
+    //Recorremos los índices y los ordenamos.
+    $claves = array_keys($intArrNotas);
+    $elementos = count($claves);
+
+    // Algoritmo burbuja para ordenar las claves
+    for ($num = 0; $num < $elementos - 1; $num++) {
+        for ($numOtro = 0; $numOtro < $elementos - $num - 1; $numOtro++) {
+            if ($claves[$numOtro] > $claves[$numOtro + 1]) {
+                $temp = $claves[$numOtro];
+                $claves[$numOtro] = $claves[$numOtro + 1];
+                $claves[$numOtro + 1] = $temp;
+            }
+        }
+    }
+
 ?>
