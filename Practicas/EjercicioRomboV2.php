@@ -1,3 +1,5 @@
+<!--Version Mejorada: Tomamos de referencia el numero que introduce el usuario, 
+pero esta vez, aplicamos ese numero correctamente en la cantidad de filas del rombo..-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

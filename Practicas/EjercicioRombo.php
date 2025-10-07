@@ -1,4 +1,4 @@
-
+<!--Ejercicio de prueba: Implementacion del rombo-->
 <?php 
     $intTamanio=10;
 

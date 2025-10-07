@@ -1,3 +1,4 @@
+<!--Version Mejorada: Tomamos de referencia el numero que introduce el usuario.-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
