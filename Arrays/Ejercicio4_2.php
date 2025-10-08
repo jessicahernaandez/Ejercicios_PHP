@@ -18,17 +18,24 @@
 
     //Insertamos dos notas mas
     echo "Ingresando dos notas mas..." . "<br/>";
-    $intArrNotas[3] = 9;
     $intArrNotas[0] = 1;
+    $intArrNotas[] = 9;
     print_r($intArrNotas);
+    echo "<br />Numero de elementos: " . count($intArrNotas);
     echo "<br />";
     echo "<br />";
 
-    //Ordenamos el array segun numero de indice.
+    //Obtengo las claves del array por medio de la funcion 'array_keys';
+    $intClaves = array_keys($intArrNotas);
+    echo "Claves del array: <br />";
+    print_r($intClaves);
+
+    for($intClave=0;$intClave<)
+    
+
+    /*//Ordenamos el array segun numero de indice.
     echo "Array ordenado: " . "<br />";
     sort($intArrNotas, SORT_NATURAL);
-    print_r($intArrNotas);
-
-    
-    
+    print_r($intArrNotas);*/
+  
 ?>
