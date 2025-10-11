@@ -36,13 +36,18 @@
         }
 
         echo "Puntos asociados a las cartas: <br/>";
-        print_r($PuntosAsociados);
+        foreach($PuntosAsociados as $key => $value) {
+            echo "<strong>$key: </strong>";
+            echo "$value, &nbsp;";
+        }
 
         //Desordeno el array con la baraja utilizando la funcion shuffle.
         shuffle($BarajaEspañola);
 
-        echo "</br></br> Repartiendo cartas...</br>";
-        print_r($BarajaEspañola);
+        echo "</br></br> Barajeando cartas...</br>";
+        foreach($BarajaEspañola as $cartas) {
+            echo "$cartas, &nbsp;";
+        }
 
         //Tambien puedo desordenarlos  con un bucle.
         for($intCont=count($BarajaEspañola)-1;$intCont>=0;$intCont--){
@@ -52,8 +57,10 @@
             $BarajaEspañola[$intCont] = $intAux;
         }
 
-        echo "</br></br>Volviendo a barajear las cartas...</br>";
-        print_r($BarajaEspañola);
+        echo "</br></br>Repartiendo las cartas...</br>";
+        foreach($BarajaEspañola as $cartas) {
+            echo "$cartas, &nbsp;";
+        }
 
         $MazoCartas = [];
         //Y ahora solo nos quedamos con 10 cartas.
