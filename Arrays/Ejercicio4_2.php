@@ -18,24 +18,36 @@
 
     //Insertamos dos notas mas
     echo "Ingresando dos notas mas..." . "<br/>";
-    $intArrNotas[0] = 1;
-    $intArrNotas[] = 9;
+    $intArrNotas[10] = 1;
+    $intArrNotas[3] = 9;
     print_r($intArrNotas);
     echo "<br />Numero de elementos: " . count($intArrNotas);
     echo "<br />";
     echo "<br />";
 
-    //Obtengo las claves del array por medio de la funcion 'array_keys';
-    $intClaves = array_keys($intArrNotas);
-    echo "Claves del array: <br />";
-    print_r($intClaves);
+    //Empezamos a ordenar los indices del array
+    //Primero -> Vamos a listar el array ordenado
+    echo "Listamos el array ordenado con un for. <br/>";
+    for($intCont=0, $intElementos=0; $intElementos <count($intArrNotas); $intCont++){
+        if(isset($intArrNotas[$intCont])) {
+            $intElementos++;
+            echo "[$intCont] => " . $intArrNotas[$intCont]. ",&nbsp;&nbsp;&nbsp;";
+        }
+    }
 
-    for($intClave=0;$intClave<)
+    echo "<br/> <br/>Pero el array sigue desordenado: <br/>";
+    print_r($intArrNotas);
     
+    //Ordenamos los indices del array utilizando una variable auxiliar
+    for($intCont=0,$intElementos=0;$intElementos<count($intArrNotas);$intCont++) {
+        if(isset($intArrNotas[$intCont])) {
+            $intElementos++;
+            $intAux=$intArrNotas[$intCont];
+            unset($intArrNotas[$intCont]);
+            $intArrNotas[$intCont] = $intAux;
+        }
+    }
 
-    /*//Ordenamos el array segun numero de indice.
-    echo "Array ordenado: " . "<br />";
-    sort($intArrNotas, SORT_NATURAL);
-    print_r($intArrNotas);*/
-  
+    echo "<br /><br/> Array ordenado:<br/> ";
+    print_r($intArrNotas);
 ?>
