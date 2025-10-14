@@ -91,10 +91,6 @@
         echo "<td style='text-align:center;'><strong>$intPuntos</strong></td>";
         echo "</tfoot>";
 
-        
-
-
-
     
     ?>
 </body>
