@@ -25,6 +25,10 @@
             echo "<br />";
         }
 
+        echo "<pre>";
+        print_r($BarajaEspañola);
+        echo "</pre>";
+
         //Asociar los puntos a cada carta.
         $puntosAsociados = [];
         foreach($BarajaEspañola as $Palo) {

@@ -15,6 +15,24 @@
                             "ojos" => "eyes","poema" => "poem"
                         ];
 
+    
+        if(isset($_GET['palabraUsuario'])) {
+            $palabraUsuario = trim($_GET['palabraUsuario']);
+            $palabraUsuario = strtolower($palabraUsuario);
+
+            if(empty($palabraUsuario)) {
+                echo "No has escrito ninguna palabra.";
+            } else {
+                
+                if(isset($miniDiccionario[$palabraUsuario])) {
+                    echo "<strong>Palabra introducida:</strong> $palabraUsuario<br/>";
+                    $traduccion = $miniDiccionario[$palabraUsuario];
+                    echo "<strong>Su traduccion:</strong> $traduccion";
+                } else {
+                    echo "Lo siento, tu palabra no se ecuentra en mi diccionario";
+                }
+            }
+        }
         
     ?>
 </body>

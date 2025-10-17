@@ -6,7 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
-    
+    <form action="Ejercicio4_6.php" method="get">
+        <p><label for="palabraUsuario">Introduce una palabra en español: </label>
+        <input type="text" name="palabraUsuario"></p>
+
+        <p><input type="submit" name="enviar"></p>
+    </form>
 </body>
 </html>
