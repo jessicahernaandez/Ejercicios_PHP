@@ -14,7 +14,7 @@
     <li>Las columnas se representan de la <strong>"a"</strong> a la <strong>"h"</strong>.</li>
     </ul></br>
 
-    <form action="Ejercicio4_8V2.php" method="get">
+    <form action="Ejercicio4_8.php" method="get">
         <table>
         <tr><td><label for="fila">Introduce la fila: </label></td>
         <td><input type="text" name="fila"></td></tr>
