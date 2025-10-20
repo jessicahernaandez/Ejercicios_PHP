@@ -7,12 +7,12 @@
 </head>
 <body>
     <h3>¡Juego del Tetris!</h3>
-    <form action="Ejercicio4_9P2.php" method="get"> 
-        <table border='1'>
+    <form action="Ejercicio4_9V2.php" method="get"> 
+        <table style="border: 1px solid black;">
             <?php 
-                for($intFila=0;$intFila<=10;$intFila++) {
+                for($intFila=1;$intFila<=10;$intFila++) {
                     echo "<tr>";
-                    for($intColumna=0;$intColumna<=10;$intColumna++) {
+                    for($intColumna=1;$intColumna<=10;$intColumna++) {
                         echo "<td><input type='checkbox' name='marcado[$intFila][$intColumna]'></td>";
                     }
                     echo "</tr>";

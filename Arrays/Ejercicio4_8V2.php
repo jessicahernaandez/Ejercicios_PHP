@@ -14,8 +14,11 @@
             }
         }
 
-        if($intFilaUsuario < 1 || $intFilaUsuario > 8 || $intIndiceColumna < 1 || $intIndiceColumna > 8) {
-            echo "<p>Error. Tienes que introducir Fila: entre 1-8 y Columna entre 'a'-'h'</p>";
+        if($intFilaUsuario < 1 || $intFilaUsuario > 8 || $intIndiceColumna < 1 || $intIndiceColumna > 8 || $intIndiceColumna === 0) {
+            echo "<div style='background-color: #ffebee; border: 1px solid red; padding: 10px; margin: 10px 0; color: red; font-weight: bold; text-align: center;'>";
+            echo "¡Error! Tienes que introducir Fila: entre 1-8 y Columna entre 'a'-'h'.";
+            echo "<br><br><a href='Formulario4_8.php' style='color: blue; text-decoration: underline; font-weight: normal;'>← Volver al formulario</a>";
+            echo "</div>";
         } else {
             $intConstante1 = $intFilaUsuario - $intIndiceColumna;
             $intConstante2 = $intFilaUsuario + $intIndiceColumna;

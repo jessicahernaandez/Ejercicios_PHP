@@ -15,7 +15,7 @@
 
         //For para sacar la posicion de la columna del usuario, con esto,
         //hacemos una formula para sacar la posicion inicial de las filas.
-        $intIndiceColumna = 0;
+        $intIndiceColumna = -1;
         for($intCont=0;$intCont<count($strColumnas);$intCont++) {
             if($strColumnaUsuario === $strColumnas[$intCont]) {
                 $intIndiceColumna = $intCont;

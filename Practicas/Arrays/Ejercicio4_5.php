@@ -90,8 +90,6 @@
         echo "<tfoot style='text-align:center;'><td><strong>Puntos Totales</strong></td>";
         echo "<td><strong>$intPuntos</strong></td></tfoot>";
         echo "</table>";
-
-
-    ?>
+   ?>
 </body>
 </html>
