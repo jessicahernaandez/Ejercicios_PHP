@@ -26,7 +26,7 @@
 
         $filasVacias = 10 - $filasIguales;
     
-        echo "<table border=1>";
+        echo "<table style='border: 1px solid black;'>";
         $filaActual=1;
         for($intCont=0;$intCont<$filasVacias;$intCont++) {
             echo "<tr>";
