@@ -3,128 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tres en Raya</title>
-    <style>
-        .tabla {
-            border-collapse: collapse;
-        }
-        .header {
-            width: 25px; 
-            height: 25px; 
-            text-align: center; 
-            border: none;
-        }
-        .celda {
-            width: 50px; 
-            height: 50px; 
-            text-align:center; 
-            border: 1px solid black;
-        }
-    </style>
-</head>
-<body>
-    <h3>¡Juego de tres en raya!</h3>
-    <p>-Indica la fila y columna a la que te quieras mover.</p>
-    <p>-Si tienes mas de una ficha en el tablero, especifica su origen.</p>
-
-
-    <table>
-    <form action="TresEnRaya.php" method="get">
-        <tr>
-        <td><label for="fila"><strong>Introduce una fila: </strong></label></td>
-            <td><input type="text" name="fila"></td>
-        </tr>
-        <tr>
-        <td><label for="columna"><strong>Introduce una columna: </strong></label></td>
-            <td><input type="text" name="columna"></td>
-        </tr>
-        <tr>
-        <td><label for="origen"><strong>Introduce el origen: </strong></label></td>
-            <td><input type="text" name="origen"></td>
-        </tr>
-        <tr>
-        <td><label for="destino"><strong>Introduce el destino: </strong></label></td>
-            <td><input type="text" name="destino"></td>
-        </tr>
-    </table>
-    <br>
-        <input type="submit" name="enviar">
-    <br>
+    <title>Tres en Raya</title> 
     <?php 
-
-    //Representacion del tablero.
-    $tablero = [
-        1 => [1 =>'-',2 =>'-',3 => '-'],
-        2 => [1 =>'-',2 =>'-',3 => '-'],
-        3 => [1 =>'-',2 =>'-',3 => '-']
-    ];
-
-    if(isset($_GET['enviar']) && isset($_GET['fila']) && isset($_GET['columna'])) {
-        $fichasEnTablero = 3;
-        $filaUsuario = [$_GET['fila']];
-        $columnaUsuario = $_GET['columna'];
-        
-        if($fichasEnTablero != 0) {
-            for($intFila=1;$intFila<=3;$intFila++) {
-                for($intColumna=1;$intColumna<=3;$intColumna++) {
-                    if(isset($tablero[$_GET['fila']][$_GET['columna']]) && $tablero[$_GET['fila']][$_GET['columna']] == '-') {
-                            $tablero[$intFila][$intColumna] = 'X';
-                            $fichasEnTablero--;
-                        }
-                }
+    //El input oculto tendra el nombre de 'tablero' y el valor sera una cadena de texto 
+    //que tendremos que pasar en la variable que tenemos el tablero.
+        if(!isset($_GET['tablero'])) {
+            $tablero = [
+                ["-", "-", "-"],
+                ["-", "-", "-"],
+                ["-", "-", "-"]
+            ];
+        } else {
+            //Como queremos hacer una conversion de cadena a array, utilizamos explode.
+            //La cadena de texto separa cada fila con '|';
+            $filas = explode("|", $_GET['tablero']);
+            $tablero = [];
+            foreach($filas as $filaCadena) {
+                $tablero[] = str_split($filaCadena);
             }
         }
 
-        echo $filasEnTablero;
+        $cuantasX = 0;
+        //Ahora que ya tengo el tablero en array trabajo sobre él.
+        if(isset($_GET['filaDestino']) && isset($_GET['columnaDestino'])) {
+            $filaDestino = $_GET['filaDestino'] -1;
+            $columnaDestino = $_GET['columnaDestino'] -1;
 
-        //Generar 'O'
-        $filaMaquina = rand(1,3);
-        $columnaMaquina = rand(1,3);
-        while($tablero[$filaMaquina][$columnaMaquina] == '-') {
-            $tablero[$filaMaquina][$columnaMaquina] = 'O';
+            if ($tablero[$filaDestino][$columnaDestino] == '-') {
+                $tablero[$filaDestino][$columnaDestino] = 'X';
+            } else {
+                echo "<p>Esa posición está ocupada</p>";
+            }
+        } else {
+            echo "<p>Esa posicion no existe</p>"; //MIRAR
         }
-    }
 
-        
-        
-        //Tablero
-        echo "<table class='tabla'>";
-        echo "<tr>
-                <th class='header'> </th>  
-                <th class='header'>1</th>
-                <th class='header'>2</th>
-                <th class='header'>3</th>
-            </tr>";
-        for($intFilas=1;$intFilas<=3;$intFilas++) {
+        //Compruebo cuantas 'X' hay.
+        $cuantasX = 0;
+        for($fila = 0; $fila < 3; $fila++) {
+            for($columna = 0; $columna < 3; $columna++) {
+                if ($tablero[$fila][$columna] == 'X') {
+                    $cuantasX++;
+               }
+            }
+        }            
+
+        //Hacer la condicion para cuando sea igual a 3 X, asi se tiene en cuenta 
+        //la fila y columna de origen.
+
+        //Genero una posicion random de la maquina para guardar en el tablero.
+
+
+        //Mostrar tablero.
+        echo "<table border=1>";
+        for($intFila=0;$intFila<=2;$intFila++) {
             echo "<tr>";
-            echo "<th class='header'>$intFilas</th>";
-            for($intColumnas=1;$intColumnas<=3;$intColumnas++) {       
-                echo "<td class='celda'>";
-                echo $tablero[$intFilas][$intColumnas];  
-                echo "</td class='celda'>";
+            for($intColumna=0;$intColumna<=2;$intColumna++) {
+                echo "<td style='text-align: center; height: 25px; width:25px;'>".$tablero[$intFila][$intColumna]."</td>";
             }
             echo "</tr>";
         }
+        echo "</table>";
 
-        echo "<pre>";
-        print_r($tablero);
-        print_r($_GET);
-        echo "</pre>";  
+        //Antes de enviar el formulario, vuelvo a convertir el tablero en un string.
+        $filasTableros = [];
+        foreach($tablero as $filaArray) {
+            $filasTableros[] = implode("", $filaArray);
+        }
 
-        $posicionesGanadoras = [
-                                [1 => 1,2 => 2,3 => 3] , 
-                                [3 => 1,2 => 2,1 => 3], 
-                                [1 => 2,2 => 2, 3 => 1],
-                                [3 => 2,2 => 2,1 => 2]
-                                ];
+        $textoTablero = implode("|", $filasTableros);
 
-        echo "<pre>";
-        print_r($posicionesGanadoras);
-        echo "</pre>";
+        //Genero el formulario.
+        echo "<br>";
+        echo "<table>";
+        if($cuantasX < 3) {
+            //Genero la tabla
+            echo "<form action='TresEnRaya.php' method='get'>";
+            echo "<tr><td><label for='filaDestino'>Introduce la fila de destino: </label></td>";
+            echo "<td><input type='text' name='filaDestino' required></td></tr>";
+            echo "<tr><td><label for='columnaDestino'>Introduce la columna de destino: </label></td>";
+            echo "<td><input type='text' name='columnaDestino' required></td></tr>";
+            echo "<tr><td><input type='submit' name='enviar'></td></tr>";
+            echo "<input type='hidden' name='tablero' value='$textoTablero'>";
 
-        //Prueba
-        $tablero[1][2] = 'O'; 
-        
+            echo "</form>";
+        } else if ($cuantasX == 3) {
+            echo "<p>Tienes las 3 X, ahora tienes que rellenar los 4 inputs.</p>";
+            echo "<form action='TresEnRaya.php' method='get'>";
+            echo "<tr><td><label for='filaDestino'>Introduce la fila de destino: </label></td>";
+            echo "<td><input type='text' name='filaDestino' required></td></tr>";
+            echo "<tr><td><label for='columnaDestino'>Introduce la columna de destino: </label></td>";
+            echo "<td><input type='text' name='columnaDestino' required></td></tr>";
+            echo "<tr><td><label for='filaOrigen'>Introduce la fila de origen: </label></td>";
+            echo "<td><input type='text' name='filaOrigen' required><td></tr>";
+            echo "<tr><td><label for='columnaOrigen'>Introduce la columna de origen: </label></td>";
+            echo "<td><input type='text' name='columnaOrigen' required></td></tr>";
+            echo "<tr><td><input type='submit' name='enviar'></td></tr>";
+            echo "<input type='hidden' name='tablero' value='$textoTablero'>";
+
+            echo "</form>";
+        } else {
+            echo "<p>Ya has puesto las 3 rayas.</p>";
+        }
+
+        echo "</table>";  
     ?>
+</head>
 </body>
 </html>
