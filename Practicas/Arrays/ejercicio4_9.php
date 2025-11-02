@@ -49,10 +49,6 @@ echo "<form action='ejercicio4_9.php' method='get'>";
 
     echo "</table>";
 
-    echo "<pre>";
-            print_r($_GET['celda']);
-            echo "</pre>";
-
     echo "<p><input type='submit' value='enviar'></p>";
 
 echo "</form>";
