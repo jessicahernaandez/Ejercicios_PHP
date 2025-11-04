@@ -29,46 +29,27 @@
         $punteroLleno = -1;
         $punteroVacio = -1;   
         echo "La ultima fila llena es: $punteroLleno";
-        echo "<pre>";
-        print_r($_GET);
-        echo "</pre>";
-        echo "<br>";
-        echo "<pre>";
-        print_r($tableroAux);
-        echo "</pre>";
 
         $arrFilaLlena = [1,1,1,1,1,1,1,1,1,1];
 
-        
+        //Primer bucle, para encontrar la ultima fila llena
         for($intFila=9;$intFila>=0;$intFila--) {
             if($tableroAux[$intFila] == $arrFilaLlena && $punteroLleno == -1) {
                 $punteroLleno = $intFila;
-            }
+            } 
         }
 
-        echo "La ultima fila llena es: $punteroLleno";
+        echo "<br>La ultima fila llena es: $punteroLleno";
 
-        for($intFila=$punteroLleno-1;$intFila>=0;$intFila--) {
-            if($tableroAux[$intFila] != $arrFilaLlena && $punteroVacio ==-1) {
-                $punteroVacio = $intFila;
-            }
+        //Segundo bucle, para encontar la primera fila vacia a partir de $punteroLleno    
+        //Mientras haya una fila llena, hacemos el intercambio.    
+        for($intFila=$punteroLleno-1; $intFila>=0;){
+            for(;$intFila>=0 && $tableroAux[$intFila]==$arrFilaLlena;$intFila--);{
+            $tableroAux[$punteroLleno] = $tableroAux[$intFila];
+            $punteroLleno--;
         }
 
-        echo "<br>La ultima fila vacia, apartir de $punteroLleno es: $punteroVacio";
-
-        //Tercer bucle para mover las filas
-        if($punteroLleno != -1) {
-            for($intFila=$punteroLleno;$intFila>=1;$intFila--) {
-                $tableroAux[$intFila] = $tableroAux[$intFila - 1];
-            }
-
-            $tableroAux[0] = array_fill(0, 10 ,0); 
-        }
-
-        echo "<br><br>Tablero modificado:";
-        echo "<pre>";
-        print_r($tableroAux);
-        echo "</pre>";
+        echo "<br>La ultima fila llena para borrar es: $punteroLleno";
 
         echo "<table>";
             for($intFila=0;$intFila<10;$intFila++) {
@@ -80,6 +61,18 @@
                 echo "</tr>";
             }
         echo "</table>";
+
+        echo "<br><br>Tablero modificado:";
+        echo "<pre>";
+        print_r($tableroAux);
+        echo "</pre>";
+        echo "<pre>";
+        print_r($_GET);
+        echo "</pre>";
+        echo "<br>";
+        echo "<pre>";
+        print_r($tableroAux);
+        echo "</pre>";
 
     ?>
 </body>
