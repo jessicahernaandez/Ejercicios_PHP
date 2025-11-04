@@ -27,30 +27,36 @@
     <?php 
 
         $punteroLleno = -1;
-        $punteroVacio = -1;   
-        echo "La ultima fila llena es: $punteroLleno";
+        echo "Inicialmente -> La ultima fila llena es: $punteroLleno";
 
         $arrFilaLlena = [1,1,1,1,1,1,1,1,1,1];
-
-        //Primer bucle, para encontrar la ultima fila llena
+ 
+        // Primer bucle, para encontrar la ultima fila llena
         for($intFila=9;$intFila>=0;$intFila--) {
             if($tableroAux[$intFila] == $arrFilaLlena && $punteroLleno == -1) {
                 $punteroLleno = $intFila;
             } 
+
         }
 
-        echo "<br>La ultima fila llena es: $punteroLleno";
+        echo "<br>Despues de buscar en el array -> La ultima fila llena es: $punteroLleno";
 
-        //Segundo bucle, para encontar la primera fila vacia a partir de $punteroLleno    
-        //Mientras haya una fila llena, hacemos el intercambio.    
-        for($intFila=$punteroLleno-1; $intFila>=0;){
-            for(;$intFila>=0 && $tableroAux[$intFila]==$arrFilaLlena;$intFila--);{
-            $tableroAux[$punteroLleno] = $tableroAux[$intFila];
-            $punteroLleno--;
+        // Segundo bucle, a partir de $punteroLleno voy preguntando, si hay una fila vacia
+        // de ser cierto, se intercambia con la fila que esta apuntando $punteroLleno, $puntero disminuye y asi sucesivamente. 
+        for($intFila=$punteroLleno-1; $intFila>=0; $intFila--) {
+            if($tableroAux[$intFila] != $arrFilaLlena) {
+                $tableroAux[$punteroLleno] = $tableroAux[$intFila];
+                $punteroLleno--;
+            }
         }
 
         echo "<br>La ultima fila llena para borrar es: $punteroLleno";
+        // $punteroLLeno me indica desde que fila tengo que dejar todo a 0.
+        for($intFila=$punteroLleno;$intFila>=0;$intFila--) {
+            $tableroAux[$intFila] = array_fill(0,10,0);
+        }
 
+        // Mostramos.
         echo "<table>";
             for($intFila=0;$intFila<10;$intFila++) {
                 echo "<tr>";
@@ -73,7 +79,6 @@
         echo "<pre>";
         print_r($tableroAux);
         echo "</pre>";
-
     ?>
 </body>
 </html>
