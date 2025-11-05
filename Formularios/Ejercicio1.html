@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="Ejercicio1.php" method="get">
+        <table>
+            <tr>
+                <td><label for="nombre">Nombre:</label></td>
+                <td><input type="text" name="nombre"></td>
+            </tr>
+            <tr>
+                <td><label for="Apellidos[]">Primer apellido:</label></td>
+                <td><input type="text" name="Apellidos[]"></td>
+            </tr>
+            <tr>
+                <td><label for="Apellidos[]">Segundo apellido:</label></td>
+                <td><input type="text" name="Apellidos[]"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td><label for="urlPersonal">URL Página personal:</label></td>
+                <td><input type="text" name="urlPersonal"></td>
+            </tr>
+            <tr>
+                <td><label for="sexo">Sexo:</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="sexo" value="hombre">Hombre</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="sexo" value="mujer">Mujer</td>
+            </tr>
+            <tr>
+                <td><label for="numConvivientes">Numero de Convivientes:</label></td>
+                <td><input type="number" name="numConvivientes"></td>
+            </tr>
+            <tr>
+                <td>Aficciones:</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="aficciones[]" value="Ejercicio">Ejercicio</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="aficciones[]" value="Leer">Leer</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="aficciones[]" value="Viajar">Viajar</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="aficciones[]" value="Jugar">Jugar</td>
+            </tr>
+        </table>
+        <p>Comidas Favoritas:</p>
+            <select name="comidasFavoritas[]" multiple="true">
+                <option value="Sushi">Sushi</option><br>
+                <option value="Tacos">Tacos</option><br>
+                <option value="Pizza">Pizza</option><br>
+                <option value="Hamburguesa">Hamburguesa</option><br>
+            </select>
+
+            <br><br><input type="submit" name="enviar">
+    </form>
+</body>
+</html>
