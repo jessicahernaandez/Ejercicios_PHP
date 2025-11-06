@@ -8,7 +8,7 @@
     $urlPersonal = $_GET["urlPersonal"] ?? $noIntroducido;
     $sexo = $_GET["sexo"] ?? $noIntroducido;
     $numConvivientes = $_GET["numConvivientes"] ?? $noIntroducido;
-    $aficciones = $_GET["aficciones"] ?? null;
+    $aficiones = $_GET["aficiones"] ?? null;
     $comidas = $_GET["comidasFavoritas"] ?? null;
 
     echo "Los datos introducidos son:<br>";
@@ -20,9 +20,9 @@
     echo "Sexo: $sexo<br>";
     echo "Numero de Convivientes en el domicilio: $numConvivientes<br><br>";
 
-    echo "Aficciones:<br>";
-    foreach($aficciones as $aficcion) {
-        echo "$aficcion.<br>";
+    echo "Aficiones:<br>";
+    foreach($aficiones as $aficion) {
+        echo "$aficion.<br>";
     }
 
     echo "<br><br>Comidas Favoritas: <br>";
