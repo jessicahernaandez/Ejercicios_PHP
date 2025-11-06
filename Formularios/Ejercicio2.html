@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="Ejercicio2.php" method="get">
+        <table>
+            <tr>
+                <td><label for="NombreAlumno">Nombre del alumno: </td>
+                <td><input type="text" id="NombreAlumno" name="NombreAlumno"></td>
+            </tr>
+            <tr>
+                <td><label for="NotasAlumno">Nota del Alumno: </td>
+                <td><input type="number" id="NotasAlumno" name="NotasAlumno"></td>
+            </tr>
+        </table>
+        </br>
+        <button type="submit" name="añadir">Añadir</button>
+        <input type="submit" name="enviar">
+
+        <input type="hidden" name="Alumnos[]" value="Alumnos[NombreAlumno][NotasAlumno]">
+    </form>
+</body>
+</html>
