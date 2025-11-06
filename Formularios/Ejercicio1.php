@@ -3,7 +3,7 @@
     $noIntroducido = "No introducido";
     $nombre = $_GET["nombre"] ?? $noIntroducido;
     $apellido1 = $_GET["Apellidos"][0] ?? $noIntroducido;
-    $apellido2 = $_GET["Apellidos"][1]?? $noIntroducido ;
+    $apellido2 = $_GET["Apellidos"][1] ?? $noIntroducido ;
     $email = $_GET["email"] ?? $noIntroducido;
     $urlPersonal = $_GET["urlPersonal"] ?? $noIntroducido;
     $sexo = $_GET["sexo"] ?? $noIntroducido;
