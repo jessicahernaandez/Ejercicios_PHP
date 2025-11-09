@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="Ejercicio1.php" method="get">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre"><br/>
+
+        <label for="apellidos[]">Primer Apellido:</label>
+        <input type="text" name="apellidos[]" id="apellidos[]"><br/>
+
+        <label for="apellidos[]">Segundo Apellido:</label>
+        <input type="text" name="apellidos[]" id="apellidos[]"><br/>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email"><br/>
+
+        <label for="urlPersonal">URL Personal:</label>
+        <input type="text" name="urlPersonal" id="urlPersonal"><br/>
+
+        <label for="sexo">Sexo:</label>
+        <input type="radio" name="sexo" id="sexo" value="Mujer">Mujer
+        <input type="radio" name="sexo" id="sexo" value="Hombre">Hombre<br/>
+
+        <label for="numConvivientes">Numero de Convivientes:</label>
+        <input type="text" name="numConvivientes" id="numConvivientes"><br/><br/>
+
+        <label for="aficiones[]">Aficiones:</label><br/>
+        <input type="checkbox" name="aficiones[]" id="aficiones[]" value="Viajar">Viajar<br/>
+        <input type="checkbox" name="aficiones[]" id="aficiones[]" value="Ejercicio">Ejercicio<br/>
+        <input type="checkbox" name="aficiones[]" id="aficiones[]" value="Musica">Musica<br/>
+        <input type="checkbox" name="aficiones[]" id="aficiones[]" value="Cocinar">Cocinar<br/><br/>
+
+        <label for="comidasFavoritas[]">Comidas Favoritas:</label><br/>
+        <select name="comidasFavoritas[]" multiple="true">
+            <option value="Sushi">Sushi</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Tacos">Tacos</option>
+            <option value="Hamburguesa">Hamburguesa</option>
+        </select>
+
+        <br/><br/> 
+        <input type="submit" name="enviar">
+
+    </form>
+</body>
+</html>

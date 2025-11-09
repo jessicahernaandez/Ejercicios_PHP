@@ -7,7 +7,6 @@
 </head>
 <body>
     <?php 
-
         if(isset($_GET["Alumnos"])) {
 
             $alumnos = [];
@@ -119,9 +118,12 @@
             echo "<input type='hidden' name='Alumnos[]'>";
             echo "</form>";
         }
+<<<<<<< HEAD
 
         
     
+=======
+>>>>>>> 3a53315 (Practicas de Fin de Semana)
     ?>    
 </body>
 </html>
