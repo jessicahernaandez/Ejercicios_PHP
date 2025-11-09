@@ -45,7 +45,7 @@
 
         //Me he mandado por un campo oculto la cantidad de X y O en cada partida.
         if(isset($_GET['cuantasX']) && isset($_GET['cuantasO'])) {
-            $cuantasX = $_GET['cuantasX'] 0;
+            $cuantasX = $_GET['cuantasX'];
             $cuantasO = $_GET['cuantasO'];
         } else {
             $cuantasX = 0;
