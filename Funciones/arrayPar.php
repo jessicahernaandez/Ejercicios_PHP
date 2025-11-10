@@ -3,7 +3,7 @@
     // Funcion que averigue si un número es par
     function esPar(int $intNum) : bool {
         
-        $esPar = $intNum % 2 == 0; true : false;
+        $esPar = $intNum % 2 == 0 ? true : false;
 
         return $esPar;
     }
@@ -13,7 +13,7 @@
     function arrayAleatorio (int $intTam, int $intMin, int $intMax) : array {
         $numAleatorios = [];
 
-        for($intCont=0;$intCont<=$intTam;$intCont++) {
+        for($intCont=0;$intCont<$intTam;$intCont++) {
             $numAleatorios[$intCont] = rand($intMin,$intMax);
         }
 
@@ -25,7 +25,7 @@
     function arrayPares (array &$array) : int {
 
         $intCantidadPares = 0;
-        for($intCont=0;$intCont<=count($array);$intCont++) {
+        for($intCont=0;$intCont<count($array);$intCont++) {
             if($array[$intCont] % 2 == 0) {
                 $intCantidadPares++;
             }
