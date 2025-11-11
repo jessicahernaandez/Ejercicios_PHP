@@ -22,7 +22,7 @@
         echo "<td>$strMes</td>";
         echo "<td style='background-image:url(img/rojo.jpg); height:20px;'>";
         if($intValorMeses[$strMes] > 0) {
-            $in</trtTemperatura = $intValorMeses[$strMes];
+            //$int </trtTemperatura = $intValorMeses[$strMes];
             for($intCont=0;$intCont<$intTemperatura;$intCont++) {   
                 echo "<img src='img/morado.jpg' alt='█' style='width:10px; height:20px; display:inline-block;'>";
             }

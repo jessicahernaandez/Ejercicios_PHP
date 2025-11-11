@@ -30,7 +30,7 @@
         echo "<br>¿Cuantos numeros Pares hay en el array anterior?: $cuantosPares<br>";
 
 
-    
+
     ?>
 </body>
 </html>
