@@ -17,7 +17,7 @@
         if($pos < strlen($strNum)) {
             for($intCont=0;$intCont<strlen($strNum);$intCont++) {
                 if($pos == $intCont) {
-                    $digito = $strNum[$intCont] + 1;
+                    $digito = $strNum[$intCont-1];
                 }
             }
         }
@@ -35,7 +35,7 @@
         if($cant < strlen($strNum)) {
             $pos = strlen($strNum) - $cant;
             $strNumNuevo = "";
-            for($intCont=0;$intCont<$pos;$intCont++) {
+            for($intCont=0;$intCont<=$pos;$intCont++) {
                 $strNumNuevo .= $strNum[$intCont];
             }
         }
@@ -46,7 +46,7 @@
 
     
 
-    echo "Al numero 12876 quiero quitarle los 3 ultimos digitos: " . quitaPorDetras(12876, 4);
+    
 
     // quitaPorDelante(int $num, int $cant): int → le quita por delante (izquierda) $cant dígitos.
     function quitaPorDelante (int $num, int $cant) : int {
@@ -65,7 +65,7 @@
         return $numDevolver;
     }
 
-    echo "<br>Al numero 12876 quiero quitarle los primeros 3 digitos: " . quitaPorDelante(12876, 1);
+    
 
     
 
