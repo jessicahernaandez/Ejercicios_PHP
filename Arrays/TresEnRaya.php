@@ -191,7 +191,7 @@
                     $fila = $par[0];
                     $columna = $par[1];
                     if($tablero[$fila][$columna] == 'O') {
-                    $coincidenciasO++;
+                        $coincidenciasO++;
                     }
                 }
                 if($coincidenciasO == 3) {

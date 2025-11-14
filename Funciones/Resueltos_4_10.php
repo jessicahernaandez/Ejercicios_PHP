@@ -1,10 +1,4 @@
-<html>
-    <head>
-        <title>
-            3 en Raya
-        </title>
-    </head>
-    <body>
+
         <form method="get">
             Fila Origen: <input type="number" min="0" max ="2" name="filaOrigen">
             Columna Origen: <input type="number" min="0" max ="2" name="columnaOrigen"> <br/>
@@ -15,7 +9,14 @@
                 
 
             <table border="1">
+                
                 <?php
+
+                $titulo = "Tres en raya";
+                include("cabecera.inc.php");
+
+                //Biblioteca con funciones
+                include("funciones3EnRaya.inc.php");
 
                 // podría haber trabajado con un array usando explode(' ', $_get('tablero'));
                 $strTablero = $_GET["tablero"]??"BBBBBBBBB"; // valores de las casillas
@@ -25,9 +26,7 @@
                 $intColumnaDestino = $_GET["columnaDestino"]??-1;
                 $blnPoneX = false;
 
-                //Funcion para comprobar ganador.
                 
-
                 //voy a poner la ficha X en la ubicación que me pidan si se puede
                 // si los valores no están fuera de rango
                 if($intFilaDestino!=null && $intFilaDestino>=0 && $intFilaDestino<=2 &&
@@ -75,20 +74,8 @@
 
 
 
-                //compruebo si ha ganado alguno
-                $chrGanador = 'B';
-                for($intCont=0;$intCont<2 && $chrGanador == 'B';$intCont++) {
-                    $chrAux = $intCont==0?'X':'O';
-                    if(($strTablero[0]==$chrAux && $strTablero[0]==$strTablero[1] && $strTablero[1]==$strTablero[2]) || //fila1
-                        ($strTablero[3]==$chrAux && $strTablero[3]==$strTablero[4] && $strTablero[4]==$strTablero[5]) || //fila2
-                        ($strTablero[6]==$chrAux && $strTablero[6]==$strTablero[7] && $strTablero[7]==$strTablero[8]) || //fila3
-                        ($strTablero[0]==$chrAux && $strTablero[0]==$strTablero[3] && $strTablero[3]==$strTablero[6]) || //columna1
-                        ($strTablero[1]==$chrAux && $strTablero[1]==$strTablero[4] && $strTablero[4]==$strTablero[7]) || //columna2
-                        ($strTablero[2]==$chrAux && $strTablero[2]==$strTablero[5] && $strTablero[5]==$strTablero[8]) || //columna3
-                        ($strTablero[0]==$chrAux && $strTablero[0]==$strTablero[4] && $strTablero[4]==$strTablero[8]) || //diagonal1
-                        ($strTablero[2]==$chrAux && $strTablero[2]==$strTablero[4] && $strTablero[4]==$strTablero[6]) ) //diagonal2
-                        $chrGanador=$chrAux;
-                }
+                //compruebo si ha ganado alguno, llamo a a funcion que me dice si gana X, O o me devuelve B, que significa que no ha ganado ninguno.
+                $chrGanador = compruebaGanador($strTablero, 'X', 'O');
 
                 if($chrGanador != 'B')
                         echo "<h1> Ha ganado $chrGanador</h1>";
@@ -110,8 +97,8 @@
 
 
                 echo "<input type='hidden' name='tablero' value='$strTablero'>";
+
+                include("pie.inc.php");
                 ?>
 
         </form>
-    </body>
-</html>
