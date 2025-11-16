@@ -103,13 +103,16 @@
 
         foreach($posicionesGanadoras as $intFila) {
             $cuentaO = 0;
+            $cuentaX = 0;
             $posLibre = -1;
             foreach($intFila as $posicion) {
                 if($strTablero[$posicion] == 'O') {
                     $cuentaO++;
                 } else if ($strTablero[$posicion] == 'B') {
                     $posLibre = $posicion;
-                }
+                } else if($strTablero[$posicion] == 'X') {
+                    $cuentaX++;
+                } 
 
                 if($cuentaO == 2 && $posLibre != -1) { //Quiere decir que tenemos posicion ganadora.
                      do {
@@ -119,8 +122,14 @@
                         $arrPosicionesO[1] = $intColumnaO;
                     } while($intFilaO * 3 + $intColumnaO != $posLibre);
                 } else {
-                    $arrPosicionesO[0] = -1;
-                    $arrPosicionesO[1] = -1;
+                    if($cuentaX == 2 && $posLibre != -1) {
+                        do {
+                            $intFilaO = rand(0,2);
+                            $intColumnaO = rand(0,2);
+                            $arrPosicionesO[0] = $intFilaO;
+                            $arrPosicionesO[1] = $intColumnaO;
+                        } while($intFilaO * 3 + $intColumnaO != $posLibre);
+                    }
                 }
             }
         }
