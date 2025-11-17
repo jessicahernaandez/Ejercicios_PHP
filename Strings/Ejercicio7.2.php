@@ -15,20 +15,22 @@
                 $chrCaracter = ord($chrCaracter);
                 //Volvemos al principio.
                 if($chrCaracter == 90) {
-                    $chrCaracter = 65;
+                    $chrCaracter = 64;
                 } else if ($chrCaracter == 122) {
-                    $chrCaracter = 97;
+                    $chrCaracter = 96;
                 }
-                
-                $chrCaracterNuevo = chr($chrCaracter + 1);
+
+                $chrCaracter = chr($chrCaracter + 1);
             }
 
-            $cadenaNueva += $chrCaracterNuevo;
+            $cadenaNueva .= $chrCaracter;
         }
 
         return $cadenaNueva;
     }
 
-    echo "Cadena 'ABCabczZ con desplazamiento en 1: '". cadenaUnDesplazamiento("ABCabczZ");
+    echo "-si hay una 'Z' empezara por la 'A'. <br />";
+    echo "-si hay una 'z' empezara por la 'a'. <br />";
+    echo "Cadena 'ABCabczZ bcDz.@' con desplazamiento en 1: ". cadenaUnDesplazamiento("ABCabczZ bcDz.@");
 
 ?>
