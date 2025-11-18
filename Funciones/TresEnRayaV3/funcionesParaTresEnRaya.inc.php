@@ -31,80 +31,49 @@
     }
 
     //Funcion que deja las fichas de O juntas. Se llama cuando ya existe un O.
-    function Oen2linea (string &$strTablero, array $posicionesGanadoras) : bool {
+    function puedeGanarO (string &$strTablero, array $posicionesGanadoras) : int {
+        $posicionGanar = -1;
 
-        $blnPoneFicha = false;
-        $arrayPosicionesO = [];
-        $posicionO = 0;
-
-        //Primero busco la posicion en la que se encuenta la ficha O.
-        for($intCont=0;$intCont<strlen($strTablero);$intCont++) {
-            if($strTablero[$intCont] == 'O') {
-                $posicionO = $intCont;
-            }
-        }
-
-        //Ahora, dependiendo de esa posicion buscamos los lugares disponibles que tenemos para colocar la ficha O juntas.
-        foreach($posicionesGanadoras as $intFila) {
-            foreach($intFila as $posicion) {
-                if(in_array($posicionO, $intFila) && $strTablero[$posicion] === 'B') { //Significa que esta vacio, entonces lo guardamos.
-                    $arrayPosicionesO[] = $posicion;
+        foreach($posicionesGanadoras as $combinacion) {
+            $cuantasO = 0;
+            $posLibre = -1;
+            foreach($combinacion as $posicion) {
+                if($strTablero[$posicion] === 'O') {
+                    $cuantasO++;
+                } else if ($strTablero[$posicion] === 'B') {
+                    $posLibre = $posicion;
                 }
             }
+
+            if($cuantasO == 2 && $posLibre != -1) {
+                $posicionGanar = $posLibre;
+            }
         }
 
-        //Ahora, tengo posiciones disponibles para ponerlas,
-        if(count($arrayPosicionesO) == 2) {
-            $indice = rand(0,1);
-            $strTablero[$arrayPosicionesO[$indice]] = 'O';
-            $blnPoneFicha = true;
-        }
-        
-        return $blnPoneFicha;
+        return $posicionGanar;
     }
 
     //Funcion en la que compruebo si pueden ganar al poner la tercer ficha, si no puede, entonces bloquea a X.
-    function OenLineaoBloquea(string &$strTablero, array $posicionesGanadoras): bool {
+    function ObloqueaX (string &$strTablero, array $posicionesGanadoras): int {
 
-        $blnPoneFicha = false;
+        $posicionBloquear = -1;
 
-        // Intentar GANAR (O tiene 2 fichas y hay 1 libre).
-        foreach ($posicionesGanadoras as $linea) {
-            $posO = 0;
+        foreach($posicionesGanadoras as $combinacion) {
+            $cuantasX = 0;
             $posLibre = -1;
-            foreach ($linea as $pos) {
-                if ($strTablero[$pos] === 'O'){
-                    $posO++;
-                } else if ($strTablero[$pos] === 'B') {
-                    $posLibre = $pos;
+            foreach($combinacion as $posicion) {
+                if($strTablero[$posicion] === 'X') {
+                    $cuantasX++;
+                } else if ($strTablero[$posicion] === 'B') {
+                    $posLibre = $posicion;
                 }
             }
-            // Si puede ganar
-            if ($posO === 2 && $posLibre !== -1) {
-                $strTablero[$posLibre] = 'O';
-                $blnPoneFicha = true;
+
+            if($cuantasX == 2 && $posLibre != -1) {
+                $posicionBloquear = $posLibre;
             }
         }
-
-        // Si no puede ganar, intenta BLOQUEAR a X 
-        foreach ($posicionesGanadoras as $linea) {
-            $posX = 0;
-            $posLibre = -1;
-            foreach ($linea as $pos) {
-                if ($strTablero[$pos] === 'X') {
-                    $posX++;
-                } else if ($strTablero[$pos] === 'B') {
-                    $posLibre = $pos;
-                }
-            }
-            // Si puede bloquear la victoria de X
-            if ($posX === 2 && $posLibre !== -1) {
-                $strTablero[$posLibre] = 'O';
-                $blnPoneFicha = true;
-            }
-        }
-
-        return $blnPoneFicha;
+        return $posicionBloquear;
     }
 
     //Funcion para saber si hay algun ganador. SI
