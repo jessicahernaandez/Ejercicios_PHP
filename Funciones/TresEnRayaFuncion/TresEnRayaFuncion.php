@@ -7,7 +7,6 @@
             Columna Destino: <input type="number" min="0" max ="2" name="columnaDestino"> <br/>
             
                 <?php
-
                 $titulo = "Tres en raya";
                 include("cabecera.inc.php");
 
@@ -26,16 +25,15 @@
                     [2,4,6]  //diagonal2
                 ];
 
-                // podría haber trabajado con un array usando explode(' ', $_get('tablero'));
-                $strTablero = $_GET["tablero"]??"BBBBBBBBB"; // valores de las casillas
+                // Variables.
+                $strTablero = $_GET["tablero"]??"BBBBBBBBB"; 
                 $intFilaOrigen = $_GET["filaOrigen"]??-1;
                 $intFilaDestino = $_GET["filaDestino"]??-1;
                 $intColumnaOrigen = $_GET["columnaOrigen"]??-1;
                 $intColumnaDestino = $_GET["columnaDestino"]??-1;
                 $blnPoneX = false;
 
-                // voy a poner la ficha X en la ubicación que me pidan si se puede
-                // si los valores no están fuera de rango
+                // Comprobacion de que los valores no esten fuera de rango.
                 if($intFilaDestino!==null && $intFilaDestino>=0 && $intFilaDestino<=2 &&
                    $intColumnaDestino!==null && $intColumnaDestino>=0 && $intColumnaDestino<=2){
                        //si el destino está vacío podré mover
@@ -67,9 +65,8 @@
                         $intFilaDestino = rand(0, 2);
                         $intColumnaDestino = rand(0, 2);
                     } while ($strTablero[$intFilaDestino * 3 + $intColumnaDestino] != 'B');
-                    //Si no tengo 3 fichas sacadas, busco una posición origen aleatoria
-                    //Pongo tambien la condicion de si el tablero tiene 1 'O' para que pueda bloquear a la X.
-                    if (substr_count($strTablero, 'O') == 1 || substr_count($strTablero, 'O') == 2) { //Si tiene 1 o 2 fichas 'O' verifico si hay una posicion en la que pueda ganar.
+                    //Pongo tambien la condicion de si el tablero tiene 1 'O' para que pueda bloquear a la X antes.
+                    if (substr_count($strTablero, 'O') == 1 || substr_count($strTablero, 'O') == 2) { //Si tiene ya las 2 fichas 'O' verifico si hay una posicion en la que pueda ganar.
                         //La funcion devolvera la posicion que puede ganar (si la encuentra, si no -1).
                         $posicion = puedeGanarO($strTablero, $posicionesGanadoras);
                         if($posicion != -1) {
@@ -87,6 +84,7 @@
                         $strTablero[$intFilaOrigen * 3 + $intColumnaOrigen] = 'B'; 
                         // Lo mismo que la anterior, al quitar la ficha de origen, verifico si la posicion en la que esta la ficha 'O' puede ganar.
                         // Si no, se llama a la funcion de bloquear, y si ninguna de las 2 ha dado exito, se coloca en una posicion random.
+                        //Aunque como no controlo quitar de origen una ficha 'O' especifica para que gane, tampoco me vale de mucho volver a repetir este codigo.
                         $posicion = puedeGanarO($strTablero, $posicionesGanadoras);
                         if($posicion != -1) {
                             $strTablero[$posicion] = 'O';

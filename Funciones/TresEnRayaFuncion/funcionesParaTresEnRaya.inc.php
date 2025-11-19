@@ -1,12 +1,12 @@
 <?php 
 
-    // Funcion que coloca la posicion de las fichas en la fila de destino
-    // (Teniendo en cuenta que esta funcion solo se llamara si hay menos de 3 fichas tanto en X como de O en el tablero).
-    // Pasamos el string por referencia & para que cambie el tablero original. SI
+    // Funcion que coloca la posicion de las fichas en la fila de destino.
+    // Pasamos el string por referencia & para que cambie el tablero original. 
     function colocaFichasDestino (string &$strTablero, int $intFilaDestino, int $intColumnaDestino, string $strCaracter): bool {
 
         $blnPoneFicha = false;
 
+            //Verifico si la posicion que me han pasado esta vacia.
             if($strTablero[$intFilaDestino * 3 + $intColumnaDestino ] == 'B') {
                 $strTablero[$intFilaDestino * 3 + $intColumnaDestino] = $strCaracter;
                 $blnPoneFicha = true;
@@ -16,7 +16,7 @@
     }
 
     // Funcion que mueve una ficha de origen hacia una de destino, verifica que la ficha sea una de las indicadas, y si
-    // ha logrado moverlo, llama a la funcion anterior para colocarlo en la ficha de origen. SI
+    // ha logrado moverlo, llama a la funcion anterior para colocarlo en la ficha de origen. 
     function colocaFichasOrigenyDestino (string &$strTablero, int $intFilaDestino, int $intColumnaDestino, int $intFilaOrigen, int $intColumnaOrigen, string $strCaracter) : bool {
         $blnPoneFicha = false;
 
@@ -30,7 +30,7 @@
         return $blnPoneFicha;
     }
 
-    //Funcion que deja las fichas de O juntas. Se llama cuando ya existe un O.
+    //Funcion que verifica si hay 2 fichas 'O' en posicion ganadora y si es asi, pone la tercer ficha en la posicion ganadora vacia.
     function puedeGanarO (string &$strTablero, array $posicionesGanadoras) : int {
         $posicionGanar = -1;
 
@@ -53,7 +53,7 @@
         return $posicionGanar;
     }
 
-    //Funcion en la que compruebo si pueden ganar al poner la tercer ficha, si no puede, entonces bloquea a X.
+    //Funcion en la que compruebo si O puede bloquear a la ficha X, de ser asi, devuelve la posicion del tablero.
     function ObloqueaX (string &$strTablero, array $posicionesGanadoras): int {
 
         $posicionBloquear = -1;
@@ -76,13 +76,11 @@
         return $posicionBloquear;
     }
 
-    //Funcion para saber si hay algun ganador. SI
+    //Funcion para saber si hay algun ganador. 
     function compruebaGanador (string &$strTablero, string $strCaracterX, string $strCaracterO, array $posicionesGanadoras) : string {
 
         $ganaCharacter = 'B';
 
-        $coincidenciasX = 0;
-        $coincidenciasO = 0;
         foreach($posicionesGanadoras as $intFila) {
             $coincidenciasO = 0;
             $coincidenciasX = 0;
