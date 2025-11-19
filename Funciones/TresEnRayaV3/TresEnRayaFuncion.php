@@ -14,6 +14,7 @@
                 // Biblioteca con funciones
                 include("funcionesParaTresEnRaya.inc.php");
 
+                // Array que contiene las posiciones ganadoras.
                 $posicionesGanadoras = [
                     [0,3,6], //columna1
                     [1,4,7], //columna2
@@ -40,11 +41,13 @@
                        //si el destino está vacío podré mover
                     if($strTablero[$intFilaDestino * 3 + $intColumnaDestino ]=='B') {
                         if (substr_count($strTablero, 'X') < 3) {//si hay menos de tres fichas, la muevo
+                            //Llamo a la funcion que coloca las fichas de estino.
                             $blnPoneX = colocaFichasDestino($strTablero, $intFilaDestino, $intColumnaDestino, 'X');
                         }else if(null == $intFilaOrigen || null == $intColumnaOrigen) // si hay tres fichas y no indico origen, no puedo moverla
                                 echo "Tienes que indicar el origen, ya que tienes tres fichas sacadas";
                                 //si la ficha origen no es mía, no la puedo mover
                         else if (isset($strTablero[($intFilaOrigen * 3 + $intColumnaOrigen)]) && $strTablero[($intFilaOrigen * 3 + $intColumnaOrigen)] == 'X') {
+                                //Llamo a la funcion que coloca las fichas de origen y de destino.
                                 $blnPoneX = colocaFichasOrigenyDestino($strTablero, $intFilaDestino, $intColumnaDestino, $intFilaOrigen, $intColumnaOrigen, 'X');
                         } else
                                 echo "No puedes mover una ficha que no es tuya";
@@ -65,25 +68,24 @@
                         $intColumnaDestino = rand(0, 2);
                     } while ($strTablero[$intFilaDestino * 3 + $intColumnaDestino] != 'B');
                     //Si no tengo 3 fichas sacadas, busco una posición origen aleatoria
+                    //Pongo tambien la condicion de si el tablero tiene 1 'O' para que pueda bloquear a la X.
                     if (substr_count($strTablero, 'O') == 1 || substr_count($strTablero, 'O') == 2) { //Si tiene 1 o 2 fichas 'O' verifico si hay una posicion en la que pueda ganar.
-                        //La funcion devolvera true, por lo que si la ficha 'O' a conseguido ganar, se colocara.
+                        //La funcion devolvera la posicion que puede ganar (si la encuentra, si no -1).
                         $posicion = puedeGanarO($strTablero, $posicionesGanadoras);
                         if($posicion != -1) {
                             $strTablero[$posicion] = 'O';
-                        } else {
+                        } else { //Si devuelve -1, entonces llamo a la funcion que bloquea a la X, si existe, devuelve esa posicion, si no -1.
                             $posicion = ObloqueaX($strTablero, $posicionesGanadoras);
-                            if($posicion != -1) {
+                            if($posicion != -1) { 
                                 $strTablero[$posicion] = 'O';
-                            } else {
+                            } else { //Y si no encuentra posicion ganadora, ni para bloquear a X, entonces la coloca en una aleatoria.
                                 $strTablero[$intFilaDestino * 3 + $intColumnaDestino] = 'O';
                             }
                         }
-                        //Si no se llama a la funcion bloquear.
-                        //Y si ninguna de estas 2 puede ganar, entonces la colocamos en una posicion aleatoria.
                     } else if (substr_count($strTablero, 'O') == 3) {
                         while ($strTablero[($intFilaOrigen = rand(0, 2)) * 3 + ($intColumnaOrigen = rand(0, 2))] != 'O') ;// busco una ficha origen a mover
-                        $strTablero[$intFilaOrigen * 3 + $intColumnaOrigen] = 'B'; // quito la ficha
-                        //Lo mismo que la anterior, al quitar la ficha de origen, verifico si la posicion en la que esta la ficha 'O' puede ganar.
+                        $strTablero[$intFilaOrigen * 3 + $intColumnaOrigen] = 'B'; 
+                        // Lo mismo que la anterior, al quitar la ficha de origen, verifico si la posicion en la que esta la ficha 'O' puede ganar.
                         // Si no, se llama a la funcion de bloquear, y si ninguna de las 2 ha dado exito, se coloca en una posicion random.
                         $posicion = puedeGanarO($strTablero, $posicionesGanadoras);
                         if($posicion != -1) {
