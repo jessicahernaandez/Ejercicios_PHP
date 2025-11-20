@@ -1,0 +1,30 @@
+
+    Metodos de arrays:
+
+    Arrays: Operaciones de comparación.
+    ◈$array1 + $array2: devuelve un array con los elementos de 1 más los de 2, pero eliminando colisiones en función del índice. Si el índice es numérico, solo se copiarán los elementos mayores del segundo array. Si los índices están desordenados, pueden seguir quedando desordenados.
+    ◈$array1 == $array2: Indica si los arrays contienen los mismos elementos
+    ◈$array1 === $array2: Indica si los arrays contienen los mismos elementos en el mismo orden
+    ◈$array1 != $array2: Indica si los arrays no contienen los mismos elementos
+    ◈$array1 !== $array2: Indica si los arrays no contienen los mismos elementos, o no están en el mismo orden
+
+    Arrays: Funciones.
+    ◈rand([$intValor1,$intValor2]): saca números aleatorios enteros entre los valores incluidos dichos valores
+    ◈range(intInicial, intFinal[, rlnSalto]): rellena un array con valores entre los indicados con distancia entre un valor y otro según lo indicado en rlnSalto. Los valores inicial y final se pueden cambiar por caracteres y el salto tendrá que ser un número real
+    ◈in_array(elemento); indica si el elemento está en el array
+    ◈sort($array[, tipoOrden]): ordena el un array. Si se le indica un tipo de orden sigue el específico indicado SORT_NUMERIC, SORT_STRING, SORT_LOCALE_STRING (idioma local), SORT_NATURAL (entiende la cadena y si tiene números, esa parte como número) y SORT_FLAG_CASE (no casesensitive).
+    ◈asort y ksort: igual que sort pero en arrays de clave valor, de tal manera que ordenaremos por el valor con asort, o por la clave con ksort.
+    ◈rsort, rasort y rksort: igual que los anteriores, pero para orden inverso
+    ◈shuffle($array): ordena un array de manera aleatoria
+    ◈explode($strSeparador, $strCadenaADividir[,nº_elementos]): saca un array de una cadena en base a un separador
+    ◈list($var1,..., $varN)=$array:asigna los valores de un array a un conjunto de variables
+    ◈array_keys($array): Te devuelve un array con las claves del array que hemos pasado como parametro.
+    ◈array_fill($indice, $cantidad, $valor): donde $indice, decimos desde que indice queremos insertar, $count, cuantos elementos, $indice incluido y $valor, el valor que queremos darle a esos elementos que vamos a introducir. 
+
+    array_search($valorBuscar, $array, $stricto): se utiliza para buscar un valor dentro de un array y devolver la clave (índice) correspondiente.
+        $valorBuscar = valor que queremos buscar, $array = el array en el que queremos buscar y $stricto es opcional. True si queremos que compare por valor y tipo y false solo por valor.
+
+    array_rand($array, $cuantasClavesDevolver): se utiliza para obtener una o varias claves aleatorias de un array. No devuelve directamente los valores, sino las claves (índices) correspondientes.
+        Por defecto devuelve 1 clave aleatoria.
+
+        

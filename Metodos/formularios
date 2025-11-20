@@ -1,0 +1,40 @@
+
+    <!--  **<input type="text"name="nombre">
+        **Para dejar un valor puesto en los input es VALUE.
+
+        Existen elementos HTML que envían varios valores:
+        ◈select multiple
+        ◈checkbox
+
+        Para poder recoger valores de estos elementos, el nombre tiene que ser un array.
+
+        <select name="lenguajes[] "multiple="true">
+            <option value="c">C</option>
+            <option value="java">Java</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+        </select> LOS SELECTS van con option, cuando se selecciona una de las opciones, el value que tiene se guarda en el name del select. que tiene que ser un array.
+        ****Para que queden seleccionados es 'selected'.
+
+        <input type="checkbox" name="asignaturas[] "value="BD"/>BD<br/>
+
+        //En los checkbox, el name tiene que ser un array, los checkbos seleccionados son los que se envian en la URL.
+            *El value que le pongamos es el nombre que salga al lado del checkbox, si nos interesa que tenga un texto.
+            *Si queremos que el checkbox este selccionado es con checked, 
+            <input type="checkbox" name="asignaturas[] "value="BD" checked/>BD<br/>
+
+
+        Cada vez que pulsas en un submit la página se refresca (se realiza una petición) y con ello se reinicia el formulario. 
+        ¿Qué pasa si me he equivocado en algún campo? 
+        El usuario tendría que volver a rellenarlo. Un truco para solucionarlo sería comprobar si existe el dato, y si es así rellenar su value. (ejemplo 3)
+        
+        <option value="c"<?=isset($_REQUEST["lenguajes"]) && in_array('c',$_REQUEST["lenguajes"])?'selected':''?>>C</option>.
+
+        CAMPOS OCULTOS
+        <input type="hidden" name="secreto2[]" value="pepe">
+        <input type="hidden" name="secreto2[]" value="perez">-
+
+        
+
+        
+

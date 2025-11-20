@@ -1,0 +1,8 @@
+
+    //is_numeric($variable): Devuelve tru si la $variabla es un numero o una cadena numerico, false en caso contrario.
+    
+    //str_split(cadena): Para dejar un string en un array, carácter a carácter.
+
+    //preg_split('/[\s,]+/',$strCadena); //Para quitarle a una cadena los espacios.
+
+    
