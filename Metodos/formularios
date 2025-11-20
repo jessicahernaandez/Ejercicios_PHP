@@ -32,7 +32,9 @@
 
         CAMPOS OCULTOS
         <input type="hidden" name="secreto2[]" value="pepe">
-        <input type="hidden" name="secreto2[]" value="perez">-
+        <input type="hidden" name="secreto2[]" value="perez">
+
+        
 
         
 
