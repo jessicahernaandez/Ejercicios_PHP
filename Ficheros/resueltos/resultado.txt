@@ -1,0 +1,7 @@
+TAMAÑO IGUAL
+Tamaño: 75 bytes
+CONTENIDO IGUAL
+Contenido 1 y 2: Esto es un 
+fichero de prueba
+para el programa que imprime
+ficheros .txt

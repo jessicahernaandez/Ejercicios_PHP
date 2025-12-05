@@ -1,0 +1,5 @@
+Parametro1:valor1
+Parametro2:valor2
+#parametro3:valor3
+#parametro4:valor4
+Parametro5:valor5#comentario
