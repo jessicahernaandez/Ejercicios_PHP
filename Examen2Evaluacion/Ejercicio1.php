@@ -1,5 +1,6 @@
 <?php 
 
+    $titulo = "Serpiente";
     include("cabecera.inc.php");
 
     //Pregunto si me han mandado algo, si no inicializo
